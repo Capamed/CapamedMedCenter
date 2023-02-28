@@ -8,11 +8,18 @@ import { LoginComponent } from './pages/login/login.component';
 import { CardModule } from 'primeng/card';
 import { UserLoginHttpService } from './services/user-login-http.service';
 import { HttpClientModule } from '@angular/common/http';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { UtilService } from './services/util.service';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -20,10 +27,15 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     CardModule,
-    HttpClientModule
+    HttpClientModule,
+    MessageModule,
+    MessagesModule,
+    ToastModule
   ],
   providers: [
-    UserLoginHttpService
+    UserLoginHttpService,
+    MessageService,
+    UtilService
   ],
   bootstrap: [AppComponent]
 })

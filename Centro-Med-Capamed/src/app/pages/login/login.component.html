@@ -1,7 +1,7 @@
 <ng-container>
-
   <div class="background-login">
     <div class="card">
+      <app-toast *ngIf="showMsjToast" [objMsgToast]="objShowNotifi"></app-toast>
       <div class="card-title">
         <div class="container text-center">
           <div class="row">
@@ -9,40 +9,48 @@
               <img class="img-login-logos" src="assets/images/logo-capamed.png" alt="logoCapamed.png" width="200px">
             </div>
             <div class="col-6">
-              <img class="img-login-logos" src="assets/images/ssimbol-medicine.png" alt="simbolMedicine.png"
+              <img class="img-login-logos" src="assets/images/simbol-medicine.png" alt="simbolMedicine.png"
                 width="150px">
             </div>
           </div>
         </div>
       </div>
       <div class="card-body">
-        <div class="row">
-          <div class="col-12">
+        <form #formularioLogin="ngForm" (ngSubmit)="validateUserLogin(formularioLogin.form.value)">
+          <div class="row">
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="username" placeholder="Username"
+                    [(ngModel)]="objLogin.username" name="username" required #vtUserName="ngModel">
+                  <label for="username">Usuario</label>
+                </div>
+                <span class="input-group-text"><img src="assets/images/user-solid.png" alt="userSolid.png"
+                    width="25px"></span>
+              </div>
+              <div class="msj-alert-sm" *ngIf="(vtUserName.invalid && (vtUserName.dirty || vtUserName.touched)) || showAlertSmUser">
+                <small id="userAlert" class="text-alert-sm">* El campo usuario es requerido.</small>
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="input-group mb-3">
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username"
-                  [(ngModel)]="objLogin.username">
-                <label for="floatingInputGroup1">Usuario</label>
+                <input type="password" class="form-control" id="password" placeholder="Password"
+                  [(ngModel)]="objLogin.password" name="password" required #vtPassword="ngModel">
+                <label for="password">Contraseña</label>
               </div>
-              <span class="input-group-text"><img src="assets/images/user-solid.png" alt="userSolid.png"
+              <span class="input-group-text"><img src="assets/images/key-solid.svg" alt="keySolid.svg"
                   width="25px"></span>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-group mb-3">
-            <div class="form-floating">
-              <input type="password" class="form-control" id="floatingInputGroup1" placeholder="Password"
-                [(ngModel)]="objLogin.username">
-              <label for="floatingInputGroup1">Contraseña</label>
+            <div class="msj-alert-sm" *ngIf="(vtPassword.invalid && (vtPassword.dirty || vtPassword.touched)) || showAlertSmPassword">
+              <small id="userAlert" class="text-alert-sm">*El campo contraseña es requerido.</small>
             </div>
-            <span class="input-group-text"><img src="assets/images/key-solid.svg" alt="keySolid.svg"
-                width="25px"></span>
           </div>
-        </div>
-        <div class="btn-login">
-          <button type="button" class="btn btn-success btn-success-custom">Iniciar sesión</button>
-        </div>
+          <div class="btn-login">
+            <button type="submit" class="btn btn-success btn-success-custom">Iniciar sesión</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
