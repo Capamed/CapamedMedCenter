@@ -21,7 +21,7 @@ export class UserLoginHttpService {
     2. Armamos la ruta a la cual se va efectuar la petición POST
       return this._httpClient.post(`${environment.url}`, body);*/
     //En este caso solo validaremos un usuario y su password por defecto.
-    if (objLogin.username === "Administrador" && objLogin.password === "administrador123")
+    if (objLogin.username === "Admin" && objLogin.password === "123")
       return true;
     return false;
   }

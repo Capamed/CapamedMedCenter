@@ -1,0 +1,80 @@
+<app-header></app-header>
+
+<ng-container>
+  <div class="styleMirrorFront">
+    <div class="contentInsideMirror">
+      <div class="row">
+        <div class="col-12">
+          <div class="row" style="text-align: center;align-items: end;">
+            <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'ESP')"
+              (mouseleave)="showInformationEvent(false,'ESP')" (click)="r()">
+              <img src="assets/images/stethoscope-solid.svg" class="icon-options">
+              <p class="nameOptionsMenuMain">Especialidades</p>
+              <hr class="lineBottomAnimation">
+            </div>
+            <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'MED')"
+              (mouseleave)="showInformationEvent(false,'MED')">
+              <img src="assets/images/user-doctor-solid.svg" class="icon-options">
+              <p class="nameOptionsMenuMain">Médicos</p>
+              <hr class="lineBottomAnimation">
+            </div>
+            <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'ENF')"
+              (mouseleave)="showInformationEvent(false,'ENF')">
+              <img src="assets/images/user-nurse-solid.svg" class="icon-options">
+              <p class="nameOptionsMenuMain">Enfermeros</p>
+              <hr class="lineBottomAnimation">
+            </div>
+            <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'PAC')"
+              (mouseleave)="showInformationEvent(false,'PAC')">
+              <img src="assets/images/head-side-mask-solid.svg" class="icon-options">
+              <p class="nameOptionsMenuMain">Pacientes</p>
+              <hr class="lineBottomAnimation">
+            </div>
+            <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'AGE')"
+              (mouseleave)="showInformationEvent(false,'AGE')">
+              <img src="assets/images/hospital-user-solid.svg" class="icon-options">
+              <p class="nameOptionsMenuMain">Agendar</p>
+              <hr class="lineBottomAnimation">
+            </div>
+            <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'REP')"
+              (mouseleave)="showInformationEvent(false,'REP')">
+              <img src="assets/images/file-medical-solid.svg" class="icon-options">
+              <p class="nameOptionsMenuMain">Reportes</p>
+              <hr class="lineBottomAnimation">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div [class]="classInformation" *ngIf="showInformation">
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-6 containerImgMenuOptions">
+            <img src="assets/images/{{objInfoMenuOptionsTmp.image}}" alt="{{objInfoMenuOptionsTmp.image}}" class="imgMenuOptions">
+          </div>
+          <div class="col-6">
+            <div class="containerTextOptions">
+              <div class="spineTextOptions">
+                <div class="spineHead">
+                  <img src="assets/images/spine-leaft.svg" alt="spine-head">
+                </div>
+                <div class="spineBottom">
+                  <img src="assets/images/spine-leaft.svg" alt="spine-bottom">
+                </div>
+                <h2 class="sm-word-wrap tittleTextOptions">
+                  {{objInfoMenuOptionsTmp.tittle}} </h2>
+                <p class="sm-word-wrap paragraphTextOptions">
+                  {{objInfoMenuOptionsTmp.text}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ng-container>
+<router-outlet></router-outlet>

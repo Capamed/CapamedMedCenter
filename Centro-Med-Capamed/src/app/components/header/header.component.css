@@ -1,0 +1,56 @@
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.rowMainMenu {
+  min-height: 65px;
+  background-color: #29225c;
+  color: white;
+}
+
+.rowMainMenu ul.dropdown-menu.show {
+  background-color: #29225c;
+}
+
+.rowMainMenu ul.dropdown-menu.show li {
+  padding: 0 5px;
+}
+
+.rowMainMenu ul.dropdown-menu.show li a {
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  color: white;
+  padding: 2px 5px 2px 10px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.rowMainMenu ul.dropdown-menu.show li a i {
+  margin-left: 25px;
+  align-self: center;
+}
+
+.rowMainMenu ul.dropdown-menu.show li a:hover {
+  color: #29225c;
+}
+
+.rowMainMenu ul.dropdown-menu.show li:last-child a {
+  border-bottom: 1px solid #fff;
+}
+
+div#divBackground {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 65px);
+  z-index: -1;
+  opacity: .3;
+  display: flex;
+}
+
+div#divBackground img {
+  margin: auto;
+}

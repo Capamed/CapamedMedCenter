@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 import { Login } from 'src/app/models/Login';
 import { UtilService } from 'src/app/services/util.service';
 import { MsgToast } from 'src/app/models/MsgToast';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,15 +25,17 @@ export class LoginComponent implements OnInit {
   public message: string = "";
   public objShowNotifi: MsgToast | undefined;
 
-  constructor(private readonly _userLoginHttpServ: UserLoginHttpService,private _messageService: MessageService, private readonly _utilService: UtilService) {
+  constructor(private readonly _userLoginHttpServ: UserLoginHttpService,
+    private readonly _utilService: UtilService,
+    private readonly _router: Router) {
   }
 
   ngOnInit(): void {
   }
 
   validateUserLogin(objFormLogin: any) {
-    let code:number = 0;
-    let message:string = "";
+    let code: number = 0;
+    let message: string = "";
     if (objFormLogin.username === "" || objFormLogin.username === undefined || objFormLogin.username === null) {
       this.showAlertSmUser = true;
     } else {
@@ -50,15 +53,22 @@ export class LoginComponent implements OnInit {
       message = "La credenciales son las correctas."
       this.objShowNotifi = this._utilService.showToastNotification(message, code);
       this.showMsjToast = true;
+      setTimeout(() => {
+        this.showMsjToast = false;
+        const url = ['/main-menu'];
+        this._router.navigate(url);
+
+      }, 1000);
     } else {
       code = 500;
       message = "La credenciales no son las correctas."
       this.objShowNotifi = this._utilService.showToastNotification(message, code);
       this.showMsjToast = true;
+      setTimeout(() => {
+        this.showMsjToast = false;
+      }, 3000);
     }
-    setTimeout(() => {
-      this.showMsjToast = false;
-    }, 3000);
+
   }
 
 }
