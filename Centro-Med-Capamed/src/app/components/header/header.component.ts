@@ -1,16 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-  public items: MenuItem[] = [];
+export class HeaderComponent {
+  @Output() showMenuOrItems: EventEmitter<EventEmitShowMenuDTO> = new EventEmitter();
 
-  ngOnInit() {
-    
+  goBackToMenu(){
+    let objEventEmitShoMenuDTO: EventEmitShowMenuDTO = {
+      showMenu: true,
+      showMenuItemsOptions: false
+    };
+    this.showMenuOrItems.emit(objEventEmitShoMenuDTO);
   }
+  
+}
 
+export interface EventEmitShowMenuDTO {
+  showMenu: boolean,
+  showMenuItemsOptions: boolean
 }

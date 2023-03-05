@@ -1,43 +1,42 @@
-<app-header></app-header>
-
-<ng-container>
+<app-header (showMenuOrItems)="showMenuOrItemsMethod($event)"></app-header>
+<ng-container *ngIf="showMenu">
   <div class="styleMirrorFront">
     <div class="contentInsideMirror">
       <div class="row">
         <div class="col-12">
           <div class="row" style="text-align: center;align-items: end;">
             <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'ESP')"
-              (mouseleave)="showInformationEvent(false,'ESP')" (click)="r()">
+              (mouseleave)="showInformationEvent(false,'ESP')" (click)="routeNextPage('ESP')">
               <img src="assets/images/stethoscope-solid.svg" class="icon-options">
               <p class="nameOptionsMenuMain">Especialidades</p>
               <hr class="lineBottomAnimation">
             </div>
             <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'MED')"
-              (mouseleave)="showInformationEvent(false,'MED')">
+              (mouseleave)="showInformationEvent(false,'MED')" (click)="routeNextPage('MED')">
               <img src="assets/images/user-doctor-solid.svg" class="icon-options">
               <p class="nameOptionsMenuMain">Médicos</p>
               <hr class="lineBottomAnimation">
             </div>
             <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'ENF')"
-              (mouseleave)="showInformationEvent(false,'ENF')">
+              (mouseleave)="showInformationEvent(false,'ENF')" (click)="routeNextPage('ENF')">
               <img src="assets/images/user-nurse-solid.svg" class="icon-options">
               <p class="nameOptionsMenuMain">Enfermeros</p>
               <hr class="lineBottomAnimation">
             </div>
             <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'PAC')"
-              (mouseleave)="showInformationEvent(false,'PAC')">
+              (mouseleave)="showInformationEvent(false,'PAC')" (click)="routeNextPage('PAC')">
               <img src="assets/images/head-side-mask-solid.svg" class="icon-options">
               <p class="nameOptionsMenuMain">Pacientes</p>
               <hr class="lineBottomAnimation">
             </div>
             <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'AGE')"
-              (mouseleave)="showInformationEvent(false,'AGE')">
+              (mouseleave)="showInformationEvent(false,'AGE')" (click)="routeNextPage('AGE')">
               <img src="assets/images/hospital-user-solid.svg" class="icon-options">
               <p class="nameOptionsMenuMain">Agendar</p>
               <hr class="lineBottomAnimation">
             </div>
             <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'REP')"
-              (mouseleave)="showInformationEvent(false,'REP')">
+              (mouseleave)="showInformationEvent(false,'REP')" (click)="routeNextPage('REP')">
               <img src="assets/images/file-medical-solid.svg" class="icon-options">
               <p class="nameOptionsMenuMain">Reportes</p>
               <hr class="lineBottomAnimation">
@@ -53,7 +52,8 @@
       <div class="col-12">
         <div class="row">
           <div class="col-6 containerImgMenuOptions">
-            <img src="assets/images/{{objInfoMenuOptionsTmp.image}}" alt="{{objInfoMenuOptionsTmp.image}}" class="imgMenuOptions">
+            <img src="assets/images/{{objInfoMenuOptionsTmp.image}}" alt="{{objInfoMenuOptionsTmp.image}}"
+              class="imgMenuOptions">
           </div>
           <div class="col-6">
             <div class="containerTextOptions">
@@ -75,6 +75,28 @@
       </div>
     </div>
 
+  </div>
+</ng-container>
+<ng-container *ngIf="showMenuItemsOptions">
+  <div class="styleMirrorFront">
+    <div class="contentInsideMirror">
+      <div class="row">
+        <div class="col-12">
+          <div class="row" style="text-align: center;align-items: end;">
+            <div class="col-5">
+            </div>
+            <div class="col-2 containerOptionsMenu" (mouseover)="showInformationEvent(true,'MED')"
+              (mouseleave)="showInformationEvent(false,'MED')" (click)="routeNextPage('MED')">
+              <img src="assets/images/circle-plus-solid.svg" class="icon-options">
+              <p class="nameOptionsMenuMain">Crear Nuevo</p>
+              <hr class="lineBottomAnimation">
+            </div>
+            <div class="col-5">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </ng-container>
 <router-outlet></router-outlet>

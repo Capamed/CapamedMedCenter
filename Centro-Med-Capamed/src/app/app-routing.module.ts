@@ -4,6 +4,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { DoctorsComponent } from './pages/doctors/doctors.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainMenuComponent } from './pages/main-menu/main-menu.component';
+import { NursesComponent } from './pages/nurses/nurses.component';
 import { PatientsComponent } from './pages/patients/patients.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
@@ -17,26 +18,32 @@ const routes: Routes = [
   {
     path: 'main-menu',
     component: MainMenuComponent,
-  },
-  {
-    path: 'specialties',
-    component: SpecialtiesComponent,
-  },
-  {
-    path: 'doctors',
-    component: DoctorsComponent,
-  },
-  {
-    path: 'patients',
-    component: PatientsComponent,
-  },
-  {
-    path: 'reports',
-    component: ReportsComponent,
-  },
-  {
-    path: 'schedule',
-    component: ScheduleComponent,
+    children: [
+      {
+        path: 'specialties',
+        component: SpecialtiesComponent,
+      },
+      {
+        path: 'doctors',
+        component: DoctorsComponent,
+      },
+      {
+        path: 'nurses',
+        component: NursesComponent,
+      },
+      {
+        path: 'patients',
+        component: PatientsComponent,
+      },
+      {
+        path: 'reports',
+        component: ReportsComponent,
+      },
+      {
+        path: 'schedule',
+        component: ScheduleComponent,
+      }
+    ]
   },
   {
     path: '',
@@ -44,7 +51,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path:'**',
+    path: '**',
     component: PageNotFoundComponent
   }
 ];

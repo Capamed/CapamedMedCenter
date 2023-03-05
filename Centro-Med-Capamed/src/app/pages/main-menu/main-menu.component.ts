@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventEmitShowMenuDTO } from 'src/app/components/header/header.component';
 import { InformationMenuOptions } from 'src/app/models/InformationMenuOptions';
 import { UtilService } from 'src/app/services/util.service';
 
@@ -16,12 +17,14 @@ export class MainMenuComponent {
     tittle: '',
     image: '',
     text: '',
-    idMenuOption: ''
+    idMenuOption: '',
+    route: ''
   };
+  public showMenu: boolean = true;
+  public showMenuItemsOptions: boolean = false;
 
   constructor(private readonly _utilService: UtilService, private readonly _router: Router) {
     this.getInformationMenuOptions();
-    console.log(this.arrayInfoMenuOptions);
   }
 
   getInformationMenuOptions() {
@@ -33,33 +36,46 @@ export class MainMenuComponent {
       tittle: '',
       image: '',
       text: '',
-      idMenuOption: ''
+      idMenuOption: '',
+      route: ''
     };
     if (typeShow === false) {
       this.classInformation = 'container fade-out';
       this.showInformation = false;
     } else {
       this.classInformation = 'container fade-in';
-      objMenuOption = this.arrayInfoMenuOptions.find((e) => {
-        return e.idMenuOption === idMenuOptions;
-      }) || {
-        tittle: '',
-        image: '',
-        text: '',
-        idMenuOption: ''
-      };
-
+      objMenuOption = this.getObjFromArray(idMenuOptions);
       this.objInfoMenuOptionsTmp.idMenuOption = objMenuOption.idMenuOption;
       this.objInfoMenuOptionsTmp.tittle = objMenuOption.tittle;
       this.objInfoMenuOptionsTmp.image = objMenuOption.image;
       this.objInfoMenuOptionsTmp.text = objMenuOption.text;
+      this.objInfoMenuOptionsTmp.route = objMenuOption.route;
       this.showInformation = true;
     }
   }
 
-  r(){
-    const url = ['/doctors'];
-    this._router.navigate(url);
+  routeNextPage(idMenuOptions: string) {
+    let objMenuOption = this.getObjFromArray(idMenuOptions);
+    this._router.navigate([`/main-menu/${objMenuOption.route}`]);
+    this.showMenu = false;
+    this.showMenuItemsOptions = true;
+  }
+
+  getObjFromArray(idMenuOptions: string): InformationMenuOptions {
+    return this.arrayInfoMenuOptions.find((e) => {
+      return e.idMenuOption === idMenuOptions;
+    }) || {
+      tittle: '',
+      image: '',
+      text: '',
+      idMenuOption: '',
+      route: ''
+    };
+  }
+
+  showMenuOrItemsMethod($event: EventEmitShowMenuDTO){
+    this.showMenu = $event.showMenu;
+    this.showMenuItemsOptions = $event.showMenuItemsOptions;
   }
 
 }
