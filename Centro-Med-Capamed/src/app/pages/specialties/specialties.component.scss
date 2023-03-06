@@ -1,0 +1,36 @@
+:host ::ng-deep .p-chip.custom-chip {
+  /* background: var(--primary-color);
+  color: var(--primary-color-text);
+  width: 500px;
+  height: 150px; */
+}
+
+.chipContainer{
+  border-radius: 100px;
+  background: #dfdfdf;
+}
+
+.descriptionSpecialtie{
+  white-space: nowrap;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.textSpecialties{
+  p{
+    font-size: 12px;
+    margin: 0px !important;
+  }
+  .small-link{
+    color: #00275e !important;
+    font-size: 11px;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+}
+
+.containerImg{
+  text-align: center;
+  margin: 5px;
+}

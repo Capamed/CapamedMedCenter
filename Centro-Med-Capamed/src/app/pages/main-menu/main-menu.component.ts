@@ -22,6 +22,7 @@ export class MainMenuComponent {
   };
   public showMenu: boolean = true;
   public showMenuItemsOptions: boolean = false;
+  public tittlePage:string = "";
 
   constructor(private readonly _utilService: UtilService, private readonly _router: Router) {
     this.getInformationMenuOptions();
@@ -56,6 +57,7 @@ export class MainMenuComponent {
 
   routeNextPage(idMenuOptions: string) {
     let objMenuOption = this.getObjFromArray(idMenuOptions);
+    this.tittlePage = objMenuOption.tittle;
     this._router.navigate([`/main-menu/${objMenuOption.route}`]);
     this.showMenu = false;
     this.showMenuItemsOptions = true;

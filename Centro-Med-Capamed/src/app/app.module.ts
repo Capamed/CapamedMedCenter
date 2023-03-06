@@ -25,6 +25,11 @@ import { PatientsComponent } from './pages/patients/patients.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { NursesComponent } from './pages/nurses/nurses.component';
+import { ChipModule } from 'primeng/chip';
+import {AvatarModule} from 'primeng/avatar';
+import {AvatarGroupModule} from 'primeng/avatargroup';
+import {FileUploadModule} from 'primeng/fileupload';
+import { CreateNewRegisterComponent } from './components/create-new-register/create-new-register.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,8 @@ import { NursesComponent } from './pages/nurses/nurses.component';
     PatientsComponent,
     ScheduleComponent,
     ReportsComponent,
-    NursesComponent
+    NursesComponent,
+    CreateNewRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,11 @@ import { NursesComponent } from './pages/nurses/nurses.component';
     MessagesModule,
     ToastModule,
     MenubarModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    ChipModule,
+    AvatarModule,
+    AvatarGroupModule,
+    FileUploadModule
   ],
   providers: [
     UserLoginHttpService,

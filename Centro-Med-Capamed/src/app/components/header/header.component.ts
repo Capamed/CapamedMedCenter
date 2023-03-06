@@ -15,7 +15,7 @@ export class HeaderComponent {
     };
     this.showMenuOrItems.emit(objEventEmitShoMenuDTO);
   }
-  
+
 }
 
 export interface EventEmitShowMenuDTO {
