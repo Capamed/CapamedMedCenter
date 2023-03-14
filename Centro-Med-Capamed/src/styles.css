@@ -4,3 +4,8 @@ body{
   background-size: cover;
   font-family: 'Montserrat', sans-serif;
 }
+
+
+.text-alert-sm{
+  color: red;
+}

@@ -1,4 +1,4 @@
 export class Specialty {
-  constructor(public id_especialidad: number, public nombre: string, public img:string, public descripcion: string) {
+  constructor(public id_especialidad: string | undefined, public nombre: string, public img:any, public descripcion: string) {
   }
 }

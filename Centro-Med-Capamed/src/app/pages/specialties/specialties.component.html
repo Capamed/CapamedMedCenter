@@ -10,24 +10,25 @@
               <div class="row">
                 <div class="col-12">
                   <div class="row" style="align-items: center;">
-                    <div class="col-2"><p-avatar
-                        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2"
-                        size="xlarge" shape="circle"></p-avatar>
+                    <div class="col-2"><p-avatar [image]="item.img" styleClass="mr-2" size="xlarge"
+                        shape="circle"></p-avatar>
                     </div>
                     <div class="col-7 textSpecialties">
                       <p><b>{{item.nombre}}</b></p>
-                      <p class="descriptionSpecialtie">La medicina general tiene varios ramas.</p>
-                      <small><a class="small-link" data-bs-toggle="modal" data-bs-target="#modalView">Ver más</a>
+                      <p class="descriptionSpecialtie">{{item.descripcion}}</p>
+                      <small><a class="small-link" data-bs-toggle="modal" data-bs-target="#modalView"
+                          (click)="viewInforSpeciality(item)">Ver más</a>
                       </small>
                     </div>
                     <div class="col-2">
                       <div class="row">
                         <div class="col-6">
                           <img src="assets/images/pen-to-square-regular.svg" style="width: 25px; cursor: pointer;"
-                            data-bs-toggle="modal" data-bs-target="#modalEdit">
+                            data-bs-toggle="modal" data-bs-target="#modalEdit" (click)="viewInforSpeciality(item)">
                         </div>
                         <div class="col-6">
-                          <img src="assets/images/circle-xmark-solid.svg" style="width: 25px; cursor: pointer;" (click)="deleteSpeciality(item);">
+                          <img src="assets/images/circle-xmark-solid.svg" style="width: 25px; cursor: pointer;"
+                            (click)="deleteSpeciality(item);">
                         </div>
                       </div>
                     </div>
@@ -45,20 +46,18 @@
   <div class="modal fade" id="modalView" tabindex="-1" aria-labelledby="modalViewLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modalViewLabel">Medicina General</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="containerImg">
-          <img src="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" width="100px">
-        </div>
-        <div class="modal-body">
-          La medicina general tiene varios ramas.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Aceptar</button>
-        </div>
+        <p-card [header]="objSpeciality.nombre" subheader="Especialidad" [style]="{width: '100%'}"
+          styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <p-image [src]="objSpeciality.img" alt="Image" width="250" [preview]="true"></p-image>
+          </ng-template>
+          <p>{{objSpeciality.descripcion | uppercase}}
+          </p>
+          <ng-template pTemplate="footer">
+            <p-button data-bs-dismiss="modal" label="Cerrar" icon="pi pi-times" styleClass="p-button-secondary"
+              [style]="{'margin-left': '.5em'}"></p-button>
+          </ng-template>
+        </p-card>
       </div>
     </div>
   </div>
@@ -66,39 +65,54 @@
   <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1"><img src="assets/images/microscope-solid.svg"
-                width="20px"></span>
-            <input type="text" class="form-control" placeholder="Especialidad" aria-label="Username"
-              aria-describedby="basic-addon1">
-          </div>
-
-        </div>
-        <div class="containerImg">
-          <div class="row">
-            <div class="col-4" style="align-self: center;">
-              <img src="assets/images/specialties.jpg" width="100px">
+        <p-card [style]="{width: '100%'}" styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <div class="row">
+              <div class="col-12 mb-3 mt-3" style="text-align: center;">
+                <h2>
+                  Actualizar Especialidad
+                </h2>
+              </div>
+              <div class="col 12">
+                <div class="row">
+                  <div class="col-4" style="text-align: right;font-weight: 500;">
+                    <span>Especialidad:</span>
+                  </div>
+                  <div class="col-8">
+                    <input type="text" pInputText style="width: 90%;height: 50%;"
+                      [(ngModel)]="objTmpUpdateSpeciality.nombre" [disabled]="disabledEditSpeciality">
+                    <br>
+                    <small id="userAlert" class="text-alert-sm" *ngIf="showMsgValidateName">* El campo especialidad es requerido.</small>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col-8" style="align-self: center;">
-              <p-fileUpload #formUpload [showCancelButton]="false"
-              (uploadHandler)="uploadImage($event, formUpload)" [customUpload]="true"
-              uploadLabel="Subir" chooseLabel="Seleccionar" accept="image/*" [maxFileSize]="1000000">
+            <div class="col 12">
+              <div class="row">
+                <div class="col-4" style="text-align: right;font-weight: 500;">
+                  <span>Descripción:</span>
+                </div>
+                <div class="col-8">
+                  <textarea [rows]="3" [cols]="35" pInputTextarea
+                    [(ngModel)]="objTmpUpdateSpeciality.descripcion" [disabled]="disabledEditSpeciality"></textarea>
+                  <br>
+                  <small id="userAlert" class="text-alert-sm" *ngIf="showMsgValidateDes">* El campo descripción es requerido.</small>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <h5>Cargar nueva imagen:</h5>
+          <p-fileUpload #formUpload [showCancelButton]="false" (uploadHandler)="uploadImage($event)"
+            [customUpload]="true" uploadLabel="Cargar" chooseLabel="Seleccionar" accept="image/*"
+            [maxFileSize]="1000000" [disabled]="disabledEditSpeciality">
           </p-fileUpload>
-            </div>
-          </div>
-        </div>
-        <div class="modal-body">
-          <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-              style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Descripción</label>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Aceptar</button>
-        </div>
+          <small id="userAlert" class="text-alert-sm" *ngIf="showMsgValidateImg">* El campo cargar imagen es requerido.</small>
+          <ng-template pTemplate="footer">
+            <p-button label="Aceptar" icon="pi pi-check" (click)="updateSpeality(objTmpUpdateSpeciality)" [disabled]="disabledEditSpeciality"></p-button>
+            <p-button data-bs-dismiss="modal" label="Cerrar" icon="pi pi-times" styleClass="p-button-secondary"
+              [style]="{'margin-left': '.5em'}"></p-button>
+          </ng-template>
+        </p-card>
       </div>
     </div>
   </div>

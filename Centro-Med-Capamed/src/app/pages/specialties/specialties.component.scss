@@ -1,10 +1,3 @@
-:host ::ng-deep .p-chip.custom-chip {
-  /* background: var(--primary-color);
-  color: var(--primary-color-text);
-  width: 500px;
-  height: 150px; */
-}
-
 .chipContainer{
   border-radius: 100px;
   background: #dfdfdf;
@@ -33,4 +26,8 @@
 .containerImg{
   text-align: center;
   margin: 5px;
+}
+
+.text-alert-sm{
+  color: red;
 }

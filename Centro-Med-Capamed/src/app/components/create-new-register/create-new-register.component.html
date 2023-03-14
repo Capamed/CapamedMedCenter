@@ -1,1 +1,50 @@
-<p>create-new-register works!</p>
+<ng-container *ngIf="showModalSpeciality">
+  <p-card [style]="{width: '100%'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+      <div class="row">
+        <div class="col-12 mb-3 mt-3" style="text-align: center;">
+          <h2>
+            Crear Especialidad
+          </h2>
+        </div>
+        <div class="col 12">
+          <div class="row">
+            <div class="col-4" style="text-align: right;font-weight: 500;">
+              <span>Especialidad:</span>
+            </div>
+            <div class="col-8">
+              <input type="text" pInputText style="width: 90%;height: 50%;" [(ngModel)]="createNewSpecialty.nombre">
+              <br>
+              <small id="userAlert" class="text-alert-sm" *ngIf="showMsgValidateName">* El campo especialidad es
+                requerido.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col 12">
+        <div class="row">
+          <div class="col-4" style="text-align: right;font-weight: 500;">
+            <span>Descripción:</span>
+          </div>
+          <div class="col-8">
+            <textarea [rows]="3" [cols]="35" pInputTextarea [(ngModel)]="createNewSpecialty.descripcion"></textarea>
+            <br>
+            <small id="userAlert" class="text-alert-sm" *ngIf="showMsgValidateDes">* El campo descripción es
+              requerido.</small>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <h5>Cargar nueva imagen:</h5>
+    <p-fileUpload #formUpload [showCancelButton]="false" (uploadHandler)="uploadImage($event)" [customUpload]="true"
+      uploadLabel="Cargar" chooseLabel="Seleccionar" accept="image/*" [maxFileSize]="1000000">
+    </p-fileUpload>
+    <small id="userAlert" class="text-alert-sm" *ngIf="showMsgValidateImg">* El campo cargar imagen es
+      requerido.</small>
+    <ng-template pTemplate="footer">
+      <p-button label="Aceptar" icon="pi pi-check" (click)="creatNewSpeciality(createNewSpecialty)"></p-button>
+      <p-button label="Cerrar" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}"
+        (click)="closeModal()"></p-button>
+    </ng-template>
+  </p-card>
+</ng-container>

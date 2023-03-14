@@ -30,6 +30,14 @@ import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
 import {FileUploadModule} from 'primeng/fileupload';
 import { CreateNewRegisterComponent } from './components/create-new-register/create-new-register.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ImageModule} from 'primeng/image';
+import {InputTextModule} from 'primeng/inputtext';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import { ReportService } from './services/report.service';
+import {TableModule} from 'primeng/table';
+import {ChartModule} from 'primeng/chart';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -62,12 +70,20 @@ import { CreateNewRegisterComponent } from './components/create-new-register/cre
     ChipModule,
     AvatarModule,
     AvatarGroupModule,
-    FileUploadModule
+    FileUploadModule,
+    NgbModule,
+    ImageModule,
+    InputTextModule,
+    InputTextareaModule,
+    TableModule,
+    ChartModule,
+    DropdownModule
   ],
   providers: [
     UserLoginHttpService,
     MessageService,
-    UtilService
+    UtilService,
+    ReportService
   ],
   bootstrap: [AppComponent]
 })

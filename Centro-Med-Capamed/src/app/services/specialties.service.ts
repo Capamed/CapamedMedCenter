@@ -12,18 +12,18 @@ export class SpecialtiesService {
 
 
   getAllSpecialties() {
-    return this._httpClient.get<Specialty[]>(`${environment.url}/especialidad/GetAllEspecialidad`);
+    return this._httpClient.get<Specialty[]>(`${environment.url}/GetAllEspecialidad`);
   }
 
   updateSpeality(updateSpeality: Specialty) {
-    return this._httpClient.post<Specialty[]>(`${environment.url}/especialidad/PostEspecialidad`, updateSpeality);
+    return this._httpClient.post(`${environment.url}/PostEspecialidad`, updateSpeality);
   }
 
   createSpeality(createSpeality: Specialty){
-    return this._httpClient.post<Specialty[]>(`${environment.url}/especialidad/PostEspecialidad`, createSpeality);
+    return this._httpClient.post(`${environment.url}/PostEspecialidad`, createSpeality);
   }
 
   deleteSpeciality(objIdSpeciality: any){
-    return this._httpClient.post<Specialty[]>(`${environment.url}/especialidad/DeleteEspecialidad`, objIdSpeciality);
+    return this._httpClient.post(`${environment.url}/DeleteEspecialidad`, objIdSpeciality);
   }
 }

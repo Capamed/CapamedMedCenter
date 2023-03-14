@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { InformationMenuOptions } from '../models/InformationMenuOptions';
 import { MsgToast } from '../models/MsgToast';
 
@@ -6,6 +6,8 @@ import { MsgToast } from '../models/MsgToast';
   providedIn: 'root'
 })
 export class UtilService {
+
+  refreshData = new EventEmitter<boolean>();
 
   constructor() { }
 
