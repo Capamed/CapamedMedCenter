@@ -21,7 +21,6 @@
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
     "jquery": "^3.6.3",
     "primeng": "^15.2.0",

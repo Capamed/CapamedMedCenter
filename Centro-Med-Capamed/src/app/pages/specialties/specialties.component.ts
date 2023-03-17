@@ -37,6 +37,7 @@ export class SpecialtiesComponent implements OnInit {
   public showMsgValidateImg: boolean = false;
   public disabledEditSpeciality: boolean = false;
 
+
   constructor(private readonly _specialtiesService: SpecialtiesService, private readonly _utilService: UtilService, private readonly _sanitizer: DomSanitizer) {
 
   }
@@ -201,7 +202,3 @@ export class SpecialtiesComponent implements OnInit {
     };
   }
 
-  h() {
-    alert('df');
-  }
-}
