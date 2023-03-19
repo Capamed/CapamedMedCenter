@@ -16,6 +16,10 @@ export class HeaderComponent {
     this.showMenuOrItems.emit(objEventEmitShoMenuDTO);
   }
 
+  logOut(){
+    localStorage.removeItem("tokenSession");
+  }
+
 }
 
 export interface EventEmitShowMenuDTO {

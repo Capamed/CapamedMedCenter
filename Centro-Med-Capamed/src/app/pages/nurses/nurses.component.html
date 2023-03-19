@@ -1,1 +1,57 @@
-
+<ng-container>
+  <p-carousel [value]="lstNurse" [numVisible]="3" [numScroll]="3" [circular]="false"
+    [responsiveOptions]="responsiveOptions" [showIndicators]="false">
+    <ng-template let-nurse pTemplate="item">
+      <div class="product-item">
+        <div class="product-item-content">
+          <div class="mb-3">
+            <img src="assets/images/nurse-{{nurse.img}}.jpg" class="product-image" />
+          </div>
+          <div>
+            <h4 class="mb-1">{{nurse.nombre}} {{nurse.apellido}}</h4>
+            <h6 class="mt-0 mb-3">{{nurse.correo_electronico}}</h6>
+            <div class="car-buttons mt-5">
+              <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-eye"
+                (click)="viewNurse(nurse)" data-bs-toggle="modal" data-bs-target="#modalView"></p-button>
+              <p-button type="button" styleClass="p-button-danger p-button-rounded ml-2" icon="pi pi-times"
+                (click)="deleteNurse(nurse.id_enfermero)"></p-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+  <div class="modal" id="modalView" tabindex="-1" aria-labelledby="modalViewLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <p-card [header]="objNurse.nombre +' '+objNurse.apellido" [style]="{width: '100%'}" styleClass="p-card-shadow">
+          <ng-template pTemplate="header">
+            <p-image src="assets/images/nurse-{{objNurse.img}}.jpg" alt="Image" width="250" [preview]="true"></p-image>
+          </ng-template>
+          <p>
+            <b>
+              Número identificación:
+            </b>
+            {{objNurse.numero_identificacion}}
+          </p>
+          <p>
+            <b>
+              Correo electronico:
+            </b>
+            {{objNurse.correo_electronico}}
+          </p>
+          <p>
+            <b>
+              Teléfono:
+            </b>
+            {{objNurse.telefono}}
+          </p>
+          <ng-template pTemplate="footer">
+            <p-button data-bs-dismiss="modal" label="Cerrar" icon="pi pi-times" styleClass="p-button-secondary"
+              [style]="{'margin-left': '.5em'}"></p-button>
+          </ng-template>
+        </p-card>
+      </div>
+    </div>
+  </div>
+</ng-container>

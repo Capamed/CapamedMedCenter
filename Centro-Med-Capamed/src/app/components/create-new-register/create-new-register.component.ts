@@ -62,7 +62,6 @@ export class CreateNewRegisterComponent {
   }
 
   ngOnInit(): void {
-    alert(this.typeMenuOption);
     this.showModalSpeciality = false;
     this.showModalDoctor = false;
     this.showModalPatient = false;
@@ -129,6 +128,7 @@ export class CreateNewRegisterComponent {
           this.showMsgValidateImg = false;
         }
       } else {
+        createSpeciality.img = this.objImgUpload;
         createSpeciality.id_especialidad = "-1";
         const $respCreateSpeciality = this._specialityService.createSpeality(createSpeciality).subscribe(
           (): void => {

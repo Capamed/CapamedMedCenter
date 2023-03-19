@@ -9,15 +9,22 @@ import { PatientsComponent } from './pages/patients/patients.component';
 import { ReportsComponent } from './pages/reports/reports.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { SpecialtiesComponent } from './pages/specialties/specialties.component';
+import { StateLoginService } from './services/guards/state-login.service';
 
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent
   },
   {
     path: 'main-menu',
     component: MainMenuComponent,
+    canActivate:[
+      StateLoginService
+    ],
+    canActivateChild: [
+      StateLoginService
+    ],
     children: [
       {
         path: 'specialties',

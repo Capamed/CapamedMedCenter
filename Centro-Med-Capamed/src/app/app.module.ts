@@ -38,6 +38,7 @@ import { ReportService } from './services/report.service';
 import {TableModule} from 'primeng/table';
 import {ChartModule} from 'primeng/chart';
 import {DropdownModule} from 'primeng/dropdown';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import {DropdownModule} from 'primeng/dropdown';
     InputTextareaModule,
     TableModule,
     ChartModule,
-    DropdownModule
+    DropdownModule,
+    CarouselModule
   ],
   providers: [
     UserLoginHttpService,

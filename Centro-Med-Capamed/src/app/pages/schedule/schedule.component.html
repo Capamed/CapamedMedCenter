@@ -1,0 +1,45 @@
+<ng-container>
+  <div style="text-align: center;">
+    <video id="video1" width="420">
+      <source src="assets/video/reception.mp4" type="video/mp4">
+      Your browser does not support HTML video.
+    </video>
+  </div>
+  <br>
+  <div style="text-align:center; display: flex;justify-content: center;">
+    <div (click)="playPause()" class="buttonMultiMedia">
+      <span>
+        <img src="assets/images/play-solid.svg" alt="" width="15px">
+      </span>/
+      <span>
+        <img src="assets/images/pause-solid.svg" alt="" width="15px">
+      </span>
+    </div>
+    <div (click)="makeBig()" class="buttonMultiMedia">
+      <span>
+        <img src="assets/images/maximize-solid.svg" alt="" width="15px">
+      </span>
+    </div>
+    <div (click)="makeSmall()" class="buttonMultiMedia">
+      <span>
+        <img src="assets/images/minimize-solid.svg" alt="" width="15px">
+      </span>
+    </div>
+    <div (click)="makeNormal()" class="buttonMultiMedia">
+      <span>
+        <img src="assets/images/arrows-to-dot-solid.svg" alt="" width="15px">
+      </span>
+    </div>
+  </div>
+  <br>
+  <div class="content-text">
+    <p style="font-weight: bold;">
+      Nota Importante:
+      <i>
+        El video colocado es con fines didácticos, para demostrar lo que se aprendió en la materia.
+       Además representa como se realizará un agedamiento en una aplicación web.
+      </i>
+    </p>
+  </div>
+
+</ng-container>
